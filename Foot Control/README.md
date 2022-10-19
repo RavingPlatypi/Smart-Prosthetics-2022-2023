@@ -7,7 +7,7 @@ The parts used are nRFTransmitter, Arduino, Herkulex Servor Motor. The wireless 
 ### Payload
 The transmitter  and receiver  communicate  via  a protocol inspired by the MIDI protocol. Information  is sent  via a payload  of predetermined  size:  a 1x3 array  of integers.  It is up to the receiver  to read these packets  and respond  accordingly.
 - (1,1) Type: Type of input: 0 for button, 1 for potentiometer and slider
-- (1,2) Number: Number of the input (ie: if there are 5 buttons, number will  be one of  0 -4)
+- (1,2) Index: Chooses which inputs to send(ie: if there are 5 buttons, buttons will be numbered one through 0-4)
 - (1,3) Value: The value of the input: HIGH or LOW for a button, 0-1023 for a potentiometer
 ## Requirements
 
