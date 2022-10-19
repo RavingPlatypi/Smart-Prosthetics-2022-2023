@@ -18,6 +18,3 @@ are needed to run files "FootControlWirelessReciever" and "FootControlWirelessRe
 
 # Important links and documentation
 1.[nRF2401](https://nrf24.github.io/RF24/)
-
-
-Hi
