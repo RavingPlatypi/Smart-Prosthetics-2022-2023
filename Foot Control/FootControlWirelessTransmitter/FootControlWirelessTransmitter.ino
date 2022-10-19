@@ -9,7 +9,7 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 
-RF24 radio(7, 8); // CE, CSN     
+RF24 radio(7, 8); // CE, CSN refers to the nRF transmitter    
 uint8_t address[][6] = { "1Node", "2Node" };
 bool radioNumber = 0; // 
 int payload[3] = {0,0,1}; // [Type, Index, Value] refer to readme: https://github.com/RavingPlatypi/Smart-Prosthetics-2022-2023/blob/main/Foot%20Control/README.md
@@ -18,12 +18,8 @@ int btnPins[] = {2}; // Joystick button
 const int numBtnPins = (sizeof(btnPins) / sizeof(btnPins[0])); // Purpose to count the number of buttons, incase we want to add more
 
 byte potPins[] = {A0, A1}; // For the joystick inputs in: Vrx / Vry
-const int numPotPins = (sizeof(potPins) / sizeof(potPins[0])); // 
+const int numPotPins = (sizeof(potPins) / sizeof(potPins[0])); //  Purpose to count the number of potentiometers
 int potValues[numPotPins];
-
-int testMotorPos = 0;
-
-
 
 void setup() {
   Serial.begin(9600);
