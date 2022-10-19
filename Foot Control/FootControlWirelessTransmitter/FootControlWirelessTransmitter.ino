@@ -70,6 +70,6 @@ bool transmitPayload(int type, int num, int value){
   bool sent = radio.write(&payload, sizeof(payload));
   return sent;
   Serial.println(
-    sent ? "transmission sent" : "failed to send transmission"
+    sent ? "Transmission sent" : "Failed to send transmission"
   );
 }
