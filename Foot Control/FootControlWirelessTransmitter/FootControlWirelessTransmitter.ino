@@ -12,13 +12,13 @@
 RF24 radio(7, 8); // CE, CSN     
 uint8_t address[][6] = { "1Node", "2Node" };
 bool radioNumber = 0; // 
-int payload[3] = {0,0,1}; // [type, number, value]
+int payload[3] = {0,0,1}; // [Type, Index, Value] refer to readme: https://github.com/RavingPlatypi/Smart-Prosthetics-2022-2023/blob/main/Foot%20Control/README.md
 
-int btnPins[] = {2};
-const int numBtnPins = (sizeof(btnPins) / sizeof(btnPins[0]));
+int btnPins[] = {2}; // Joystick button 
+const int numBtnPins = (sizeof(btnPins) / sizeof(btnPins[0])); // Purpose to count the number of buttons, incase we want to add more
 
-byte potPins[] = {A0, A1};
-const int numPotPins = (sizeof(potPins) / sizeof(potPins[0]));
+byte potPins[] = {A0, A1}; // For the joystick inputs in: Vrx / Vry
+const int numPotPins = (sizeof(potPins) / sizeof(potPins[0])); // 
 int potValues[numPotPins];
 
 int testMotorPos = 0;
@@ -32,16 +32,17 @@ void setup() {
     pinMode(btnPins[i], INPUT_PULLUP);
   }
 
-  // initialize the transceiver on the SPI bus
+  // Initialize the transceiver on the SPI bus
   if (!radio.begin()) {
-    Serial.println("radio hardware is not responding!!");
+    Serial.println("Radio hardware is not responding!");
     while (1) {}  // hold in infinite loop
   }
+  // Need every radio.(method) in order for nRF to work eve
   radio.setPALevel(RF24_PA_LOW);
   radio.openWritingPipe(address[radioNumber]);
-  radio.stopListening();
+  radio.stopListening(); // This method is not used, but still must be included
   radio.setPayloadSize(sizeof(payload));
-  Serial.println("transmitter started.");
+  Serial.println("Transmitter started!");
   delay(1000);
 }
 
@@ -55,7 +56,7 @@ void loop() {
   for (int i = 0; i < numPotPins; i++){
     potValues[i] = analogRead(potPins[i]);
     int potValue = map(potValues[i], 512, 1024, 0, 120);
-    Serial.println(potValue);
+    Serial.println(potValue);  
     transmitPayload(1, i, potValue);
   }
 }
