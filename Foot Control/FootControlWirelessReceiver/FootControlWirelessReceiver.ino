@@ -73,12 +73,3 @@ void loop() {
     }
   }
 }
-
-
-void onButtonSignal(int number, int value){
-  digitalWrite(ledPins[number], value);
-}
-
-void onMotorSignal(int number, int value){
-  servos[number].write(value);
-}
