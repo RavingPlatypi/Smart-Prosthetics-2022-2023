@@ -11,10 +11,10 @@
 #include <printf.h>
 #include <Servo.h>
 
-RF24 radio(7, 8);  // CE, CSN
+RF24 radio(7, 8);  // CE, CSN reders to the pins of nRF transmitter
 uint8_t address[][6] = { "1Node", "2Node" };
 bool radioNumber = 0;
-int payload[3] = {0, 0, 0}; // [type, number, value]
+int payload[3] = {0, 0, 0}; // [Type, Number, Value]
 
 int ledPins[] = {2, 3};
 int numLedPins = (sizeof(ledPins) / sizeof(ledPins[0]));
@@ -33,19 +33,16 @@ void setup() {
     servos[i].attach(motorPins[i]);
   }
 
-  // initialize the transceiver on the SPI bus
+  // Initialize the transceiver on the SPI bus
   if (!radio.begin()) {
-    Serial.println("radio hardware is not responding!!");
-    while (1) {}  // hold in infinite loop
+    Serial.println("Radio hardware is not responding!");
+    while (1) {}  // Hold in infinite loop
   }
   radio.setPALevel(RF24_PA_LOW); // All radio settings must match the transmitter
   radio.setPayloadSize(sizeof(payload));
   radio.openReadingPipe(1, address[radioNumber]);
   radio.startListening();
-  Serial.println("receiver started!");
-
-  //  printf_begin();
-  //  radio.printPrettyDetails();
+  Serial.println("Receiver started!");
   delay(1000);
 }
 
