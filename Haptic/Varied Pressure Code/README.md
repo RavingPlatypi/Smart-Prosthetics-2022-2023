@@ -12,6 +12,6 @@ Must need:
 - 4 Vibration Motors
 - 4 100kOhm Resistors
 
-#### Contributor
+#### Contributors
 Alfredo Gonzalez &
  Abrahan Solis
