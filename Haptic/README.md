@@ -1,6 +1,6 @@
 # Haptic Feedback 2022-2023
 
-This folder contains codes created by the haptic feedback team members. It contains codes from testing to finalized codes. There are wiring diagrams and each code contains a description for each.
+This folder contains codes created by the haptic feedback team members. It contains codes from testing to finalized codes. There are wiring diagrams and each code contains a description.
 
 ## Devices
 
@@ -8,7 +8,7 @@ This folder contains codes created by the haptic feedback team members. It conta
 - 4 A101 Pressure sensors
 - 4 Vibration Motors
 
-Resistors, MCP6004 Op Amp, 47 pF Capacitor were used in testing, however in the final design, they were not utilized at the end.
+Resistors, MCP6004 Op Amp, 47 pF Capacitor were used in testing, however in the final design, they were not utilized.
 
 ## Links 
 ```bash
