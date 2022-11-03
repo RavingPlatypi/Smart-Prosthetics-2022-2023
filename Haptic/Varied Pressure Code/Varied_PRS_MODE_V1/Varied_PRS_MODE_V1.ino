@@ -48,6 +48,7 @@ if (counter == 3){
 }
 // Puga End
 }
+}
 
 void processMotor(int i) {
   pressureReading = analogRead(pressureAnalogPin[i]);
