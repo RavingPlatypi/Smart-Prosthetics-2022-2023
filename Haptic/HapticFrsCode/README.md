@@ -1,7 +1,6 @@
 # Haptic Feedback Code
 
 
-
 ## Description
 
 Here includes the code for testing the motor vibration and force pressure sensor reading. The parts used are Arduino Uno card, 4 vibration motors, 1 A101 force sensor, and as an option, a potentiometer.
@@ -17,3 +16,5 @@ To read force sensor code, you must comment out the lines that have testMotors, 
 ##### Notes
 This code is only prototype testing. 
 
+###### Contributor
+Abrahan Solis
