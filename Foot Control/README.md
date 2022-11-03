@@ -21,4 +21,3 @@ are needed to run files "FootControlWirelessReciever" and "FootControlWirelessRe
 # Important links and documentation
 1.[nRF2401](https://nrf24.github.io/RF24/)
 
-![Payload](https://github.com/RavingPlatypi/Smart-Prosthetics-2022-2023/blob/pooga/Foot%20Control/README%20Pics/LMAOO.jpg)
