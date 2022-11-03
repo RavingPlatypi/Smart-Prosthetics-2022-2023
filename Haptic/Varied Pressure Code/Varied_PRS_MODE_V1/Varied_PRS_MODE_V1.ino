@@ -36,10 +36,12 @@ if ( btnState == LOW) {
   }
   if (counter == 1){
   Serial.println("Low Vibration");
+  maxMotorIntensity = 900;
   maxMotorIntensity = 0.33*maxMotorIntensity;
 }
 if (counter == 2){
   Serial.println("Medium Vibration");
+  maxMotorIntensity = 900;
   maxMotorIntensity = 0.66*maxMotorIntensity;
 }
 if (counter == 3){
