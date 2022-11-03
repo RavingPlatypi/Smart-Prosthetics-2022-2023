@@ -1,6 +1,6 @@
 # Haptic Feedback 2022-2023
 
-This folder contains codes created by the haptic feedback team members. It contains codes from testing to finalized codes. There are wiring diagrams and each code contains a description.
+This folder contains codes created by the haptic feedback team members. It contains codes from testing to finalized codes, which includes wiring diagrams and its description.
 
 ## Devices
 
