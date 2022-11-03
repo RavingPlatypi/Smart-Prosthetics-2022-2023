@@ -2,9 +2,9 @@ int pressureAnalogPin[] = { A0, A1, A2, A3 };  //pin where our pressure pad is l
 int pressureReading;                           //variable for storing our reading
 int motorPins[4] = { 9, 10, 11, 6 };           //connected on pins 9, 10, 11, and 6
 
-int btn = 2;
-int counter = 0;
-int btnState = 0;
+int btn = 2; // Puga
+int counter = 0; // Puga
+int btnState = 0; // Puga
 
 //Adjust these if required.
 int noPressure = 100;         //max value for no pressure on the pad
@@ -13,7 +13,7 @@ int maxMotorIntensity = 900;  //max value for highest pressure on the pad
 
 void setup() {
   Serial.begin(115200);  // We'll send debugging information via the Serial monitor
-  pinMode(btn, INPUT_PULLUP);
+  pinMode(btn, INPUT_PULLUP); // Puga
   for (int i = 0; i < 4; i++) {     //loop for pins 9,10,11, and 6
     pinMode(motorPins[i], OUTPUT);  //connected to pin 9
   }
@@ -23,6 +23,7 @@ void loop() {
   for (int i = 0; i < 4; i++) {
     processMotor(i);
   }
+  // Puga Start
   btnState = digitalRead(btn);
 if ( btnState == LOW) {
   if (counter < 3){
@@ -45,6 +46,7 @@ if (counter == 3){
   Serial.println("High Vibration");
    maxMotorIntensity = 900;
 }
+// Puga End
 }
 
 void processMotor(int i) {
