@@ -25,7 +25,7 @@ void loop() {
   for (int i = 0; i < 4; i++) {
     processMotor(i);
   }
-  // Puga Start
+  // Start
   btnState = digitalRead(btn);
   if (btnState == LOW) {
     counter++;
