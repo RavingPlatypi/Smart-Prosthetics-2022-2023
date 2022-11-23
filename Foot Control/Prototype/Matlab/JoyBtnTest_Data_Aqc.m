@@ -2,7 +2,7 @@ clear all
 
 a = arduino;
 
-% Initialize
+% Initialize 
 joy = zeros(200,1);
 joyBtn = zeros(200,1);
 btn = zeros(200,1);
