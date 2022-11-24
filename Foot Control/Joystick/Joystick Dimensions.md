@@ -3,7 +3,7 @@
 Here we have the dimensions of each joystick we are planning on implementing.
 
 ## PSP
-[MIT](https://choosealicense.com/licenses/mit/)
+[PSP Pinout](https://www.adafruit.com/product/444?gclid=Cj0KCQjwqoibBhDUA)
 
 
 ## Nintendo 3-DS
