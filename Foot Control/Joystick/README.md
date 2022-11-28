@@ -1,6 +1,8 @@
 # Joystick Dimensions
 
 Here we have the dimensions of each joystick we are planning on implementing.
+This links explains the standard pins for most common joysticks
+[Joystick Pin Standards](https://www.etechnophiles.com/potentiometer-symbol-pinout/)
 
 ## PSP
 [PSP Pinout](https://www.adafruit.com/product/444?gclid=Cj0KCQjwqoibBhDUA)
