@@ -9,21 +9,17 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 
-RF24 radio(7, 8); // CE, CSN     
+RF24 radio(7, 8); // CE, CSN refers to the pins of nRF transmitter    
 uint8_t address[][6] = { "1Node", "2Node" };
 bool radioNumber = 0; // 
-int payload[3] = {0,0,1}; // [type, number, value]
+int payload[3] = {0,0,0}; // [Type, Index, Value] refer to readme: https://github.com/RavingPlatypi/Smart-Prosthetics-2022-2023/blob/main/Foot%20Control/README.md
 
-int btnPins[] = {2};
-const int numBtnPins = (sizeof(btnPins) / sizeof(btnPins[0]));
+int btnPins[] = {2}; // Joystick button 
+const int numBtnPins = (sizeof(btnPins) / sizeof(btnPins[0])); // Purpose to count the number of buttons, incase we want to add more
 
-byte potPins[] = {A0, A1};
-const int numPotPins = (sizeof(potPins) / sizeof(potPins[0]));
+byte potPins[] = {A0, A1}; // For the joystick inputs in: Vrx / Vry
+const int numPotPins = (sizeof(potPins) / sizeof(potPins[0])); //  Purpose to count the number of potentiometers
 int potValues[numPotPins];
-
-int testMotorPos = 0;
-
-
 
 void setup() {
   Serial.begin(9600);
@@ -32,30 +28,31 @@ void setup() {
     pinMode(btnPins[i], INPUT_PULLUP);
   }
 
-  // initialize the transceiver on the SPI bus
+  // Initialize the transceiver on the SPI bus
   if (!radio.begin()) {
-    Serial.println("radio hardware is not responding!!");
+    Serial.println("Radio hardware is not responding!");
     while (1) {}  // hold in infinite loop
   }
+  // Need every radio.(method) in order for nRF to work
   radio.setPALevel(RF24_PA_LOW);
   radio.openWritingPipe(address[radioNumber]);
-  radio.stopListening();
+  radio.stopListening(); // This method is not used, but still must be included
   radio.setPayloadSize(sizeof(payload));
-  Serial.println("transmitter started.");
+  Serial.println("Transmitter started!");
   delay(1000);
 }
 
 void loop() {
-  // Read button values and transmit.
+  // Read button values and transmit
   int btnState = digitalRead(btnPins[0]);
   transmitPayload(0,0,!btnState);
   
 
-  // Read potentiometer values and transmit.
+  // Read potentiometer values and transmit
   for (int i = 0; i < numPotPins; i++){
     potValues[i] = analogRead(potPins[i]);
     int potValue = map(potValues[i], 512, 1024, 0, 120);
-    Serial.println(potValue);
+    Serial.println(potValue);  
     transmitPayload(1, i, potValue);
   }
 }
@@ -73,17 +70,6 @@ bool transmitPayload(int type, int num, int value){
   bool sent = radio.write(&payload, sizeof(payload));
   return sent;
   Serial.println(
-    sent ? "transmission sent" : "failed to send transmission"
+    sent ? "Transmission sent" : "Failed to send transmission"
   );
-}
-
-/*
-Below is the function for testing a Servomotor.
-Put this in the loop to make a Servomotor rotate 180 deg and back.
-*/
-void testServoMessage() {
-  int payloadBtn[3] = {1,0,testMotorPos};
-  bool sent = radio.write(&payloadBtn, sizeof(payload));
-  testMotorPos++;
-  if (testMotorPos >= 180) testMotorPos = 0;
 }
